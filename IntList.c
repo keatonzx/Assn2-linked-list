@@ -38,18 +38,20 @@ node* createNode (int value)
  {
    node* p = list->head;
   
-  printf("\n");
+    printf("\n");
   
-  while(p != NULL){
-    p = p->next;
-    //printf("Freeing the node [%d]\n",list->head->data);
-    free(list->head);
-    list->head = p;
-  }
-   list->head = NULL;
-   list->tail =NULL;
-   list->len = 0;
-   list->capacity = 0;
+    while(p != NULL){
+      p = p->next;
+     // printf("Freeing the node [%d]\n",list->head->data);
+      free(list->head);
+      list->head = p;
+    }
+    //list->head->data = 0;
+    list->head = NULL;
+    list->tail =NULL;
+    list->len = 0;
+    list->capacity = 0;
+   
  }
 
 
@@ -165,7 +167,9 @@ int ilistFind( IntList list, int item )
 void ilistAppend( IntList *list, int item )
 {
   
-    list->capacity++;
+   growCapacity(list);
+  
+//    list->capacity++;
 
   if(ilistLen(*list) == 0){
    // listPush(list,item);
@@ -191,8 +195,15 @@ void ilistAppend( IntList *list, int item )
  * Insert the given item into the list at the given location
  * POST: length of list is increased by one, and ilistGet( list, at ) == item
  */
+void growCapacity(IntList* list)
+{
+  list->capacity = list->len + 20;
+}
+
 void ilistInsert( IntList *list, int at, int item )
 {
+    growCapacity(list);
+  
   node* newNode = createNode(item);
 
   node* p = list->head;
@@ -204,7 +215,7 @@ void ilistInsert( IntList *list, int at, int item )
     if( i == at-1){
       newNode->next = p->next;
       p->next = newNode;
-      list->capacity++;
+     // list->capacity++;
       list->len++;
       //list->capacity++;
     }
@@ -213,8 +224,8 @@ void ilistInsert( IntList *list, int at, int item )
     i++;
   }
   
-  printf("%d\n",i);
-  printf("%d",p->data);
+ // printf("%d\n",i);
+  //printf("%d",p->data);
   
 }
 

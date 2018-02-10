@@ -100,6 +100,9 @@ void ilistJoin( IntList *list1, IntList list2 );
  */
 void ilistReverse( IntList *list );
 
+
+void growCapacity(IntList* list);
+
 /*
  * Return a "deep copy" of the list, with it's own, independent set of data.
  * Challenge Exercise:  NOT required for assignment - add your own tests to test driver.
