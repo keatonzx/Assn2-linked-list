@@ -86,9 +86,9 @@ void main()
    failed_test_counter += run_test(ilistGet(list, ilistLen(list)-1), new_size-1, "List tail Item does not match last item Appended.");
    printf(".");
 
-   int new_capacity = list.capacity;
+   //int new_capacity = list.capacity;
 
-  /* // Test 7: Insert beyond capacity (white-box tests)
+   // Test 7: Insert beyond capacity (white-box tests)
    int new_capacity = list.capacity;
    while (ilistLen(list) < new_capacity+2) { 
       ilistInsert(&list, 2, 999);
@@ -99,7 +99,7 @@ void main()
    failed_test_counter += run_test(ilistGet(list, ilistLen(list)-1), new_size-1, "After Insert, List tail Item does not match last item Appended.");
    printf(".");
    failed_test_counter += run_test(ilistGet(list, 2), 999, "List Item does not match last item Inserted.");
-   printf(".");*/
+   printf(".");
    
    
    // Test 8: Find / Count operations

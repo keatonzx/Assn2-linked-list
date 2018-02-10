@@ -29,6 +29,7 @@ int main() {
    printf("len = %d\n", list.len);
    ilistInsert(&list, 5, 42);
    ilistPrint(list);
+   printf("%d length of list after insert one more capacity is %d", list.len,list.capacity);
    printf("\n");
 
    ilistRemove(&list, 4);
@@ -52,14 +53,14 @@ int main() {
    ilistPrint(list);
    printf("\n");
    printf("Count of 99 in joined list? %d\n", ilistCount(list, 99));
-
+    printf("%d is the length of joind list capacity is %d\n", list.len, list.capacity);
    ilistReverse(&list2);
    printf("Reversed list 2: \n");
    ilistPrint(list2);
    printf("\n");
   
-   printf("%d",list2.tail->data);
-
+   printf("%d\n",list2.tail->data);
+   printf("%d list length after reverse\n", list2.len);
    ilistDelete(&list);
    ilistDelete(&list2);
    ilistPrint(list);

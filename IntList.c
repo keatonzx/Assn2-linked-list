@@ -46,6 +46,10 @@ node* createNode (int value)
     free(list->head);
     list->head = p;
   }
+   list->head = NULL;
+   list->tail =NULL;
+   list->len = 0;
+   list->capacity = 0;
  }
 
 
@@ -78,7 +82,7 @@ void ilistPrint( IntList list )
  */
 int ilistLen( IntList list )
 {
-  if (list.head == NULL){
+  /*if (list.head == NULL){
     return 0;
   }
   else{
@@ -90,7 +94,8 @@ int ilistLen( IntList list )
     }
     
     return i;
-  }
+  }*/
+  return list.len;
 }
 
 /*
@@ -159,9 +164,8 @@ int ilistFind( IntList list, int item )
  */
 void ilistAppend( IntList *list, int item )
 {
+  
     list->capacity++;
-    list->len++;
-    //list->capacity++;
 
   if(ilistLen(*list) == 0){
    // listPush(list,item);
@@ -176,7 +180,11 @@ void ilistAppend( IntList *list, int item )
       }
       p->next = createNode(item);
       list->tail = p->next;
+        //list->len++;
+
   }
+  list->len++;
+
 }
 
 /*
@@ -228,7 +236,6 @@ void ilistRemove( IntList *list, int at )
   
   p->next = p->next->next;
   list->len--;
-  list->capacity--;
 }
 
 /*
