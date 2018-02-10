@@ -41,12 +41,14 @@ node* createNode (int value)
     printf("\n");
   
     while(p != NULL){
+      
       p = p->next;
      // printf("Freeing the node [%d]\n",list->head->data);
       free(list->head);
       list->head = p;
     }
     //list->head->data = 0;
+    
     list->head = NULL;
     list->tail =NULL;
     list->len = 0;
