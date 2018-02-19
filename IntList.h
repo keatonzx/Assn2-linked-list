@@ -22,7 +22,6 @@ typedef struct {
   node* head;
   node* tail;
   int len;
-  int capacity;
 } IntList;
 /*********************
  *  PUBLIC INTERFACE

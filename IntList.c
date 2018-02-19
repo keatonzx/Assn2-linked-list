@@ -18,7 +18,7 @@
  */
 IntList ilistNew( )
 {
-  IntList list = {NULL,NULL,0,0};
+  IntList list = {NULL,NULL,0};
   return list;
 }
 
@@ -43,17 +43,12 @@ node* createNode (int value)
     while(p != NULL){
       
       p = p->next;
-     // printf("Freeing the node [%d]\n",list->head->data);
       free(list->head);
       list->head = p;
-    }
-    //list->head->data = 0;
-    
+    }    
     list->head = NULL;
     list->tail =NULL;
     list->len = 0;
-    list->capacity = 0;
-   
  }
 
 
@@ -74,11 +69,9 @@ void ilistPrint( IntList list )
     if (p == list.tail) {
       printf("t");
     }
-    
     p = p->next;
   }
   printf("\n");
-
 }
 
 /*
@@ -86,19 +79,6 @@ void ilistPrint( IntList list )
  */
 int ilistLen( IntList list )
 {
-  /*if (list.head == NULL){
-    return 0;
-  }
-  else{
-    int i = 0; 
-    node* p = list.head;
-    while (p != NULL){
-      i++;
-      p = p->next;
-    }
-    
-    return i;
-  }*/
   return list.len;
 }
 
@@ -169,12 +149,7 @@ int ilistFind( IntList list, int item )
 void ilistAppend( IntList *list, int item )
 {
   
-   growCapacity(list);
-  
-//    list->capacity++;
-
   if(ilistLen(*list) == 0){
-   // listPush(list,item);
     list->head = createNode(item);
   }
   else{
@@ -186,30 +161,22 @@ void ilistAppend( IntList *list, int item )
       }
       p->next = createNode(item);
       list->tail = p->next;
-        //list->len++;
-
   }
   list->len++;
-
 }
 
 /*
  * Insert the given item into the list at the given location
  * POST: length of list is increased by one, and ilistGet( list, at ) == item
  */
-void growCapacity(IntList* list)
-{
-  list->capacity = list->len + 20;
-}
+
 
 void ilistInsert( IntList *list, int at, int item )
 {
-    growCapacity(list);
   
   node* newNode = createNode(item);
 
   node* p = list->head;
- // node* newNode = createNode(item);
   
   int i = 0;
   
@@ -217,18 +184,11 @@ void ilistInsert( IntList *list, int at, int item )
     if( i == at-1){
       newNode->next = p->next;
       p->next = newNode;
-     // list->capacity++;
       list->len++;
-      //list->capacity++;
-    }
-    
+    }    
     p = p->next;
     i++;
   }
-  
- // printf("%d\n",i);
-  //printf("%d",p->data);
-  
 }
 
 /*

@@ -81,6 +81,7 @@ void main()
    printf(".");
    failed_test_counter += run_test(list.capacity, 0, "Destructor fails to set list capacity to zero.");
    printf(".");
+  
   //THERE IS NO LIST.DATA???
    failed_test_counter += run_test((long int)list.data, (long int)NULL, "Destructor fails to set list data pointer to NULL.");
    printf(".");
