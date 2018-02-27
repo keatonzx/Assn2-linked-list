@@ -11,6 +11,8 @@
 #include <assert.h>
 
 #include "IntList.h"
+//function prototypes
+node* createNode (int value);
 
 /*
  * Constructor - return a new, empty list 
