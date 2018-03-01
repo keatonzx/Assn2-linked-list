@@ -23,7 +23,10 @@ IntList ilistNew( )
   IntList list = {NULL,NULL,0};
   return list;
 }
-
+/*
+ * create a new node for the list
+ * 
+ */
 node* createNode (int value)
 {
   node* node = malloc(sizeof(node));
