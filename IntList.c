@@ -1,5 +1,5 @@
 /**
- *  Integer LIST ADT : public interface
+ *  Integer LIST ADT : public implementation
  *
  *  COMP220: Assignment 2
  *  Author:  Keaton Armstrong
@@ -46,7 +46,6 @@ node* createNode (int value)
     printf("\n");
   
     while(p != NULL){
-      
       p = p->next;
       free(list->head);
       list->head = p;
@@ -137,8 +136,7 @@ int ilistFind( IntList list, int item )
   while (p != NULL){
     if (p->data == item){
       return i;
-    }
-    else{
+    } else{
       p = p->next;
       i++;
     }
@@ -156,14 +154,13 @@ void ilistAppend( IntList *list, int item )
   
   if(ilistLen(*list) == 0){
     list->head = createNode(item);
-  }
-  else{
+  }else{
+   node* p = list->head;
     
-      node* p = list->head;
-
       while(p->next != NULL){
         p = p->next;
       }
+    
       p->next = createNode(item);
       list->tail = p->next;
   }
